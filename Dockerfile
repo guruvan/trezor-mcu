@@ -1,6 +1,5 @@
-# initialize from the image
-
 FROM ubuntu:14.04
+# IMAGE mazaclub/trezor-mcu-build
 
 ENV GCC_ARM_VERSION 4.9.3.2015q1-0trusty13
 
