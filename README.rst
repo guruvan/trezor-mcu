@@ -11,7 +11,21 @@ How to build Trezor firmware?
 3. ``cd trezor-mcu``
 4. ``./firmware-docker-build.sh TAG`` (where TAG is v1.3.2 for example, if left blank the script builds latest commit)
 
-This creates trezor.bin in current directory and prints its fingerprint at the last line of the build log.
+This will build a docker image ``mazaclub/trezor-mcu-build:$FIRMWARETAG`` 
+Mazaclub versions reflect the upstream versions, with additional mazaclub enhancements (coins)
+
+This creates trezor.bin in current directory and prints its fingerprint from inside and out of the container at the last lines of the build log.
+
+How to install your new firmware?
+--------------------------------
+1. Build as above
+2. Put device into bootloader mode
+   - restart device pressing both buttons
+3. ``python bootloader/firmware_sign.py -f ./trezor.bin``
+4. ``trezorctl firmware_update -f ./trezor.bin``
+5. Ensure shasums match
+6. ``trezorctl list_coins`` to see the new coins available
+
 
 How to get fingerprint of firmware signed and distributed by SatoshiLabs?
 -------------------------------------------------------------------------
