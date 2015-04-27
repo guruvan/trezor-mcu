@@ -25,6 +25,28 @@ How to install your new firmware?
 4. ``trezorctl firmware_update -f ./trezor.bin``
 5. Ensure shasums match
 6. ``trezorctl list_coins`` to see the new coins available
+7. ``trezorctl reset_device -p -l 1.3.3-mc``
+   - this will reset the device and label it with a version number, and set a pin
+   - Text console pin set is difficult:
+     1. Pin layout is in "std calculator" but jumbled on the Device SO
+     2. translate the device pin layout to calculator as such:
+     
+     CALC  DEVICE
+     789   589
+     456   261
+     123   347 
+
+     Typing "1234" will result in PIN: 3472
+     Device will then switch layout again
+     
+     CALC DEVICE
+     789  518
+     456  924
+     123  637
+ 
+     Repeat pin "3472" by typing "2635"
+
+
 
 
 How to get fingerprint of firmware signed and distributed by SatoshiLabs?
