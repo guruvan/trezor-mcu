@@ -18,4 +18,7 @@ docker run -t -v $(pwd):/output $IMAGETAG:$FIRMWARETAG /bin/sh -c "\
 echo "---------------------"
 echo "Firmware fingerprint:"
 shasum -a 256 -p trezor.bin 
+echo "To Install, first sign, then update the device:"
+echo "python firmware/firmware_sign.py -f ./trezor.bin"
+echo "python trezorctl firmware_update -f ./trezor.bin"
 
